@@ -2,13 +2,8 @@ import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
 
-# ✅ Securely Fetch API Key from Streamlit Secrets
-GOOGLE_API_KEY = st.secrets.get("GOOGLE_API_KEY")
-
-# ✅ Validate API Key
-if not GOOGLE_API_KEY:
-    st.error("⚠️ Google GenAI API key is missing! Please add it to `.streamlit/secrets.toml`.")
-    st.stop()
+API_KEY=open(r"C:\Users\Bhaskar Matta\OneDrive\Desktop\key.txt")
+GOOGLE_API_KEY=API_KEY.read()
 
 # ✅ Function to fetch AI-generated travel options
 def get_travel_options(source: str, destination: str) -> str:
@@ -51,8 +46,8 @@ st.markdown("""
 """)
 
 # ✅ User Inputs
-source = st.text_input("🛫 Enter Source Location", placeholder="E.g., New York")
-destination = st.text_input("🛬 Enter Destination", placeholder="E.g., Los Angeles")
+source = st.text_input("🛫 Enter Source Location", placeholder="E.g., Hyderabad")
+destination = st.text_input("🛬 Enter Destination", placeholder="E.g., Goa")
 
 # ✅ Handle Travel Search
 if st.button("🔍 Find Travel Options"):
