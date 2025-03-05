@@ -2,8 +2,7 @@ import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage
 
-API_KEY=open(r"C:\Users\Bhaskar Matta\OneDrive\Desktop\key.txt")
-GOOGLE_API_KEY=API_KEY.read()
+GOOGLE_API_KEY = st.secrets.get("GOOGLE_API_KEY")
 
 # ✅ Function to fetch AI-generated travel options
 def get_travel_options(source: str, destination: str) -> str:
